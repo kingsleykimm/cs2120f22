@@ -147,7 +147,8 @@ you answer.
 
 Suppose it's raining OR the sprinkler is running, and that in
 either case the grass is wet. Is the grass wet? How would you
-prove it?
+prove it? No, the grass wouldn't we be wet, since it could be raining or the sprinkler could be running, but it could mean
+that both cases are still not happening.
 -/
 
 
@@ -371,6 +372,8 @@ beautiful (∀ n, NaturalNumber(n) → Beautiful(n) : true),
 and I want to prove (7 is beautiful : true). Prove it.
 Name the inference rule and identify the arguments you
 give it to prove it.
+all_elim inference rule, arguments are (variables: n), and the proofs
+of NaturalNumber(n) and Beautiful (n). 
 
 Constructive logic. Suppose I have a proof, pf, that every 
 natural number is beautiful (∀ (n : ℕ), beautiful n), and I 

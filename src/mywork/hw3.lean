@@ -52,6 +52,23 @@ See how the English presents the "story" of the formal proof in more
 natural, human, terms.
 
 ANSWER HERE:
+
+Suppose b1 and b2 are objects of some type, Ball, and that isBlue 
+is one-place predicate taking any Ball, b, as an argument, and that
+reduces to a proposition, denoted (isBlue b), that we understand as
+asserting that the particular ball, b, is blue. Next (295), we take
+all_balls_blue as a proof that all balls are blue. Finally (296 and
+297), we see that we can can use this proof/truth by *applying* it
+to any particular ball, b, to obtain a proof/truth that b is blue. 
+
+
+English version of story: If there is an object with the name Socrates, and it is
+of the type Person, there is a predicate that takes any defined Person as an argument and
+tells whether the Person isMortal. This predicate will output a proposition, 
+denoted as (isMortal: Person), which asserts that a person is mortal. Next,
+we take a proof called everyoneIsMortal that says that every Person is Mortal,
+and by applying this proof to any particular person, in this case Socrates,
+we can obtain the truth that Socrates is mortal.
 -/
 
 
@@ -71,22 +88,22 @@ To do so, uncomment the following block of expressions then fill
 in blanks to complete this task.
 -/
 
-/- Uncomment this block to answer the question
+-- Uncomment this block to answer the question
 variable Person : Type
-variable Likes : _        -- a predicate with two Person arguments
-variable Jealous : _      -- same thing here  
+variable Likes : Person → Person → Prop       -- a predicate with two Person arguments
+variable Jealous : Person → Person → Prop       -- same thing here  
 variable Triangle :       -- note definition extends to next line
-  ∀ (p1 p2 p3 : Person), _  
-variables ed hannah mel : _
-variable likes_ed_hannah : _
-variable likes_hannah_mel : _
+∀ (p1 p2 p3 : Person), Likes p1 p2 → Likes p2 p3 → Jealous p1 p3   
+variables ed hannah mel : Person
+variable likes_ed_hannah : Likes ed hannah
+variable likes_hannah_mel : Likes hannah mel
 -- Finally write and use #check to check an expression that proves that ed is 
 -- jealous of mel.
 -- To ANSWER, fill in the _ with your expression. 
 -- HINT "Apply" what you know.
--/
 
-#check _
+
+#check Jealous ed mel
 
 
 /- #3: Proofing a propositions involving ∀ and ∨
@@ -97,6 +114,10 @@ the methods of inference we've covered: ∀ (P Q : Prop), P ∧ Q → Q ∨ P.
 Do read that proposition carefully, please. You don't need to write a
 long proof. Keep it concise. Identiy the inference rules you use.
 
+First, I need to use the and elimination rules to isolate each of P and Q
+and prove they are true. Using and-elim left and right, I can find proofs
+of both P and Q. Then, since I know that both P and Q are true, I can use
+or-elim left to show that Q → Q ∨ P. 
 -/
 
 
@@ -112,7 +133,17 @@ You may (and probably should) break up your expression over several
 lines, using line breaks and indentation to make the answer readable.
 -/
 
-variable Person : Type
+/-
+Split up the proofs by line:
+Everyone knows someone
+someone knows someone
+someone knows everyone
+-/
+
+-- variable Person : Type
 variable Knows : Person → Person → Prop
+variables p1 p2 p3 : Person
 def answer : Prop := 
-    _
+  (∀ (p1 : Person), Knows p1 p2) → 
+  Knows p2 p3 →
+  Knows p3 p1
