@@ -1,3 +1,4 @@
+
 [package]
 name = "dm2120f22"
 version = "0.1"
@@ -5,12 +6,4 @@ lean_version = "leanprover-community/lean:3.48.0"
 path = "src"
 
 [dependencies]
-<<<<<<< HEAD
-<<<<<<< HEAD
-mathlib = {git = "https://github.com/leanprover-community/mathlib", rev = "a337782b19f1f0d2ddaacef8fcd19803b864b2f4"}
-=======
-mathlib = {git = "https://github.com/leanprover-community/mathlib", rev = "ebf8ff42db1e71dd0880e3f274dd5ac9303b8a2a"}
->>>>>>> 2d40dac11dcd43e8d4f95e8d5999053c35a5908e
-=======
 mathlib = {git = "https://github.com/leanprover-community/mathlib", rev = "c8760bde60264742b5c4e51e2d721f2290d735f4"}
->>>>>>> 0b6b62959fcd7a11081850d5ff46716b66c9b5e9
